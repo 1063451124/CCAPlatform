@@ -19,3 +19,15 @@ CREATE TABLE `timeslots` (
   UNIQUE KEY `date_timeslot_UNIQUE` (`date_timeslot`),
   KEY `date` (`date`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `profile` (
+  `student_id` int(11) NOT NULL,
+  `first_name` varchar(64) DEFAULT NULL,
+  `last_name` varchar(64) DEFAULT NULL,
+  `hk_mobile_no` varchar(64) DEFAULT NULL,
+  `cityu_email` varchar(64) DEFAULT NULL,
+  `cv` blob,
+  `work_location` varchar(64) DEFAULT NULL,
+  `last_modify_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  PRIMARY KEY (`student_id`),
+  UNIQUE KEY `student_id_UNIQUE` (`student_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='student profile';
