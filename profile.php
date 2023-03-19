@@ -45,6 +45,11 @@
   ?>
 
   <main role="main" class="container align-middle">
+  <div class="reminder"> ** See the timetable and profile of career coaches <a class="introduction" target="_blank"
+        href="https://www.cityu.edu.hk/sds/web/tpg/careerservice/cap/Career_Coaches_Timetable_Mar2023_v2.pdf">HERE</a>
+      before choosing your preferred timeslot.</div>
+    <div class="reminder"> ** origin <a class="introduction" target="_blank"
+        href="https://cityuhk.questionpro.com/a/TakeSurvey?tt=XUT1Bc3X%2BesECHrPeIW9eQ%3D%3D">HERE</a></div>
 
     <form action="http://www.abc.com/" method="get">
       <div class="form-group">

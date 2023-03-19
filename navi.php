@@ -5,15 +5,30 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarCollapse">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="./index.php">Appointment <span class="sr-only">(current)</span></a>
+      <?php
+      //remember to add tags when adding new web pages
+      $pages=array("/index.php"=>"Appointment","/profile.php"=>"Profile");
+      foreach ($pages as $key => $value){
+        if ($_SERVER['PHP_SELF'] == $key){
+          print("<li class='nav-item active'>");
+          print("<a class='nav-link' href='".$key."'>".$value." <span class='sr-only'>(current)</span></a>");
+        }
+        else{
+          print("<li class='nav-item'>");
+          print("<a class='nav-link' href='".$key."'>".$value."</a>");
+        }
+        print("</li>");
+      }
+      ?>
+      <!--<li class="nav-item active">
+        <a class="nav-link" href="/index.php">Appointment <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="./profile.php">Profile</a>
+        <a class="nav-link" href="/profile.php">Profile</a>
       </li>
       <li class="nav-item">
         <a class="nav-link disabled">Disabled</a>
-      </li>
+      </li>-->
     </ul>
     <form class="form-inline mt-2 mt-md-0">
       <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
