@@ -1,3 +1,4 @@
+/*name:root pwd：root port:3306*/ 
 CREATE DATABASE `cca` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
 CREATE TABLE `coach` (
   `name` varchar(64) NOT NULL DEFAULT 'Name',
