@@ -5,3 +5,5 @@ Recommend env: https://www.xp.cn/download.html
 in WNMP mode
 
 Recommend dir: WWW/your_dir/this_project
+
+see mysql init in db_init.sql
