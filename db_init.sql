@@ -9,7 +9,7 @@ CREATE TABLE `coach` (
   UNIQUE KEY `name_UNIQUE` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 CREATE TABLE `timeslots` (
-  `date_timeslot` varchar(64) NOT NULL DEFAULT '199901010930' COMMENT '主键 ',
+  `date_timeslot` varchar(64) NOT NULL DEFAULT '199901010930' COMMENT '主键 ,由date、timeslot拼接 不重复',
   `date` varchar(64) DEFAULT '19990101' COMMENT '日期',
   `timeslot` varchar(64) DEFAULT '0930' COMMENT '时间段（以左端点记录 每段45分钟）',
   `coach` varchar(45) DEFAULT NULL COMMENT 'coach 名字',
