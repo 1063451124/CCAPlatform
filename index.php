@@ -55,8 +55,14 @@
     <div class="row">
       <div class="col-md-4">
         <?php
+        // $month = date('m')
+
+        
         require 'calendar.php';
-        print $calendar;
+        $calendar = build_calendar(3, 2023);
+        $calendar = '<div>' . $calendar . '</div>';
+        $calendar .= '<style type="text/css">table tbody tr td, table tbody tr th { text-align: center; }</style>';
+        print($calendar);
         ?>
       </div>
       <?php
