@@ -1,5 +1,8 @@
 <?php
-
+      //////////////////////////////////////
+      //author: sunyt
+      //function: get mysql connection and return
+      //////////////////////////////////////
 
 function get_conn() {
 $servername = "localhost";

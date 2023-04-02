@@ -1,5 +1,8 @@
 <?php
-
+      //////////////////////////////////////
+      //author: sunyt、
+      //function: render calendar with data from model
+      //////////////////////////////////////
 function build_calendar($month, $year) {
 	require('calendar_model.php');
 	$status = json_decode(get_month_status('03', '2023'),true);
@@ -33,7 +36,7 @@ function build_calendar($month, $year) {
 		//print($datekey);
 		//$datekey = (string)$datekey;
 
-		// what is the status
+		// what is the status? by sunyt TODO: ajax & <a> link
 		if( array_key_exists($datekey,$status) == true){
 			if ($status[$datekey] == 0){
 				$style_date = 'table-danger';
@@ -49,7 +52,7 @@ function build_calendar($month, $year) {
 			$style_date = '';
 		}
 
-		// Is this today?
+		// Is this today? by sunyt
 		if(date('Y-m-d') == $date) {
 			$calendar .= "<td class='day success $style_date' rel='$date'><b>$currentDay</b></td>";
 		} else {

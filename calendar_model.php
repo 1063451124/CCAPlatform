@@ -1,5 +1,8 @@
 <?php
-
+      //////////////////////////////////////
+      //author: sunyt
+      //function: model of calendar,fetch timeslots detail by month, year
+      //////////////////////////////////////
 
 function get_month_status($month, $year){
 require 'db_conn.php';
