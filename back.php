@@ -41,7 +41,7 @@
                     echo "<td>" . $row["name"] . "</td>";
                     echo "<td>" . $row["industries"] . "</td>";
                     echo "<td>" . $row["detail"] . "</td>";
-                    echo "<td><a href='edit.php?name=" . $row["name"] . "'>Edit</a> | <a href='delete.php?name=" . $row["name"] . "'>Delete</a></td>";
+                    echo "<td><a href='back_edit.php?name=" . $row["name"] . "'>Edit</a> | <a href='back_delete.php?name=" . $row["name"] . "'>Delete</a></td>";
                     echo "</tr>";
                 }
             } else {
@@ -112,7 +112,7 @@
     <br>
 
     <h2>Add Coach</h2>
-    <form method="post" action="create_coach.php">
+    <form method="post" action="back_create_coach.php">
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" required><br>
 
@@ -131,7 +131,7 @@
     <br>
 
     <h2>Add Timeslot</h2>
-    <form method="post" action="create_timeslot.php">
+    <form method="post" action="back_create_timeslot.php">
         <label for="date_timeslot">Date/Timeslot:</label>
         <input type="text" id="date_timeslot" name="date_timeslot" required><br>
 
