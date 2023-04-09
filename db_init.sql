@@ -5,7 +5,7 @@ CREATE TABLE `coach` (
   `name` varchar(64) NOT NULL DEFAULT 'Name',
   `industries` varchar(128) DEFAULT '',
   `detail` text,
-  `img` blob,
+  `img` varchar(128),
   PRIMARY KEY (`name`),
   UNIQUE KEY `name_UNIQUE` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -32,6 +32,7 @@ CREATE TABLE `profile` (
   PRIMARY KEY (`student_id`),
   UNIQUE KEY `student_id_UNIQUE` (`student_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='student profile';
+ALTER TABLE `cca`.`coach` CHANGE COLUMN `img` `img` VARCHAR(128) NULL DEFAULT NULL ;
 /* index左侧日历数据 SQL eg：select book_date,10 - sum(booker) as available from 
 (SELECT book_date, case booker when booker then "1" else "0" end as booker FROM cca.timeslots) each_day  
 group by book_date;*/

@@ -47,7 +47,7 @@
   <main role="main" class="container">
     
     <div class="reminder"> ** See the timetable and profile of career coaches <a class="introduction" target="_blank"
-        href="https://www.cityu.edu.hk/sds/web/tpg/careerservice/cap/Career_Coaches_Timetable_Mar2023_v2.pdf">HERE</a>
+        href="/coach_profile.php">HERE</a>
       before choosing your preferred timeslot.</div>
     <div class="reminder"> ** origin <a class="introduction" target="_blank"
         href="https://cityuhk.questionpro.com/a/TakeSurvey?tt=XUT1Bc3X%2BesECHrPeIW9eQ%3D%3D">HERE</a></div>
@@ -55,12 +55,31 @@
     <div class="row">
       <div class="col-md-4">
         <?php
+      //////////////////////////////////////
+      //author: sunyt
+      //function: render calendar
+      //////////////////////////////////////
+
+        // $month = date('m')
+
+        
         require 'calendar.php';
-        print $calendar;
+        $calendar = build_calendar(3, 2023);
+        $calendar = '<div>' . $calendar . '</div>';
+        $calendar .= '<style type="text/css">table tbody tr td, table tbody tr th { text-align: center; }</style>';
+        print($calendar);
         ?>
       </div>
       <?php
+      //////////////////////////////////////
+      //author: LIN
+      //function: show timeslot
+      //////////////////////////////////////
         require 'schedule.php';
+        $timeslot = build_timeslot(1, 3, 2023);
+        #$timeslot = '<div>' . $timeslot . '</div>';
+        #$timeslot .= '<style type="text/css">table tbody tr td, table tbody tr th { text-align: center; }</style>';
+        print($timeslot);
         ?>
     </div>
 
