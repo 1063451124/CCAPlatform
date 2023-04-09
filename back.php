@@ -97,7 +97,7 @@
                     echo "<td>" . $row["coach"] . "</td>";
                     echo "<td>" . $row["booker"] . "</td>";
                     echo "<td>" . $row["last_modify_time"] . "</td>";
-                    echo "<td><a href='edit.php?date_timeslot=" . $row["date_timeslot"] . "'>Edit</a> | <a href='delete.php?date_timeslot=" . $row["date_timeslot"] . "'>Delete</a></td>";
+                    echo "<td><a href='back_edit.php?date_timeslot=" . $row["date_timeslot"] . "'>Edit</a> | <a href='delete.php?date_timeslot=" . $row["date_timeslot"] . "'>Delete</a></td>";
                     echo "</tr>";
                 }
             } else {
