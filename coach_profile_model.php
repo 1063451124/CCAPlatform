@@ -9,7 +9,7 @@ function get_coach_profile(){
     // example even for multiple rows
     
     if (!$result) {
-        printf("Error: %s\n", mysqli_error($con));
+        printf("Error: %s\n", mysqli_error($conn));
         exit();
     }
     $ret = array();
