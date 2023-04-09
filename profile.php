@@ -51,50 +51,86 @@
     <div class="reminder"> ** origin <a class="introduction" target="_blank"
         href="https://cityuhk.questionpro.com/a/TakeSurvey?tt=XUT1Bc3X%2BesECHrPeIW9eQ%3D%3D">HERE</a></div>
 
+    <!--
+    By:duyulin 
+    profile要求填写的信息
+    -->
+
     <form action="http://www.abc.com/" method="get">
       <div class="form-group">
         <label for="formGroupExampleInput" class="control-label" >First Name </label>
         <input type="text" class="form-control" id="#" placeholder="" required>
       </div>
+
       <div class="form-group">
-        <label for="exampleInputEmail1">Email address</label>
-        <input type="email" class="form-control" id="##" aria-describedby="emailHelp"
-          placeholder="Enter email">
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        <label>Last Name</label>
+        <input type="text" class="form-control" id="LastName" required>
       </div>
+      <div class="form-group">
+        <label>Student ID</label>
+        <input type="text" class="form-control" id="StudentID" required>
+      </div>
+      <div class="form-group">
+        <label>HK Mobile</label>
+        <input type="text" class="form-control" id="HKMobile" required>
+      </div>
+      <div class="form-group">
+        <label>CityU Email Address</label>
+        <input type="email" class="form-control" id="CityU Email Address" required>
+      </div>
+
       <div class="form-group">
         <label for="exampleFormControlFile1">Update your CV</label>
         <input type="file" class="form-control-file" id="exampleFormControlFile1">
       </div>
-      <!--
-      <fieldset>
-        <legend>Login information</legend>
-        User Name: <input name="N" type="text"> <br><br>
 
-        Password: <input name="P" type="password"> <br><br>
-      </fieldset>
 
-      <input type="radio" name="G" value="M" checked> Male
-      <input type="radio" name="G" value="F"> Female <br><br>
+      <div class="form-group">
+        <label>Prefer date</label><br>
+        <select name="date" required>
+         <option value="27 March 2023(Monday)">27 March 2023(Monday)</option>
+         <option value="30 March 2023(Thursday)">30 March 2023(Thursday)</option>
+        </select>
+      </div>
 
-      <input type="checkbox" name="M" value="Y" checked> Lifetime membership <br><br>
+    <!--
+    By:duyulin 
+    checkbox 多选但至少选一个功能未实现
+    -->
+      <div class="form-group">
+        <label>Prefer timeslot (You may choose more than one timeslot)</label>
+        <input type="checkbox" class="form-control" name="timeslot" value="1">09:30 - 10:15
+      </div>
 
-      Job: <br>
-      <select name="J">
-        <option value="1">Student</option>
-        <option value="2">Engineer</option>
-        <option value="3" selected>Self Employed</option>
-      </select>
+      <div class="form-group">
+        <label>Desired work destination after graduation</label><br>
+        <select name="destination" required>
+         <option value="HongKong">HongKong</option>
+         <option value="Mainland China">Mainland China</option>
+         <option value="Macao">Macao</option>
+         <option value="Taiwan">Taiwan</option>
+         <option value="Notsure">Not sure</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Purpose of the consultation</label><br>
+        <select name="purpose" required>
+         <option value="1">CV and Cover Letter Review</option>
+         <option value="2">Career Planning</option>
+         <option value="3">Interview Skills</option>
+         <option value="4">Job application advertising</option>
+         <option value="5">Career Direction</option>
+         <option value="6">Job Search Techniques</option>
+         <option value="7">Professional Development</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Wechat ID (Optional)</label>
+        <input type="text" class="form-control" id="WechatID" >
+      </div>
+      <input type="submit" value="Done">
 
-      <br><br>Special Request: <br>
-      <textarea id="R" name="Request" rows="5" cols="80"></textarea>
 
-      <br><input type="submit" value="Go">
-
-      <input type="reset">
-      <input type="button" value="Click Me!" onclick="alert('Good Evening!');">
-      <button><img src="https://www.cs.cityu.edu.hk/~kclee/pic.jpg" width=30></button>
-      -->
     </form>
 
   </main>
