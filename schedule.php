@@ -7,11 +7,14 @@ define("SESSION_DURATION", 45);
 function build_timeslot($date, $month, $year) {
     require_once('schedule_model.php');
     #TODO: fixed input
+    #DONE by STEVEN
+    $time_input = $year.''.$month.''.$date;
 
     $timeslot = "<table class='table col-md-8 table-bordered' id='schedule'>";
-    $timeslot .= "<caption id='tbs'>Time Slots</caption>";
+    $timeslot .= "<caption id='tbs'>{$month}.{$date}.{$year}</caption>";
 
-    $status = get_timeslot_status('20230301');
+    $status = get_timeslot_status($time_input);
+
     $prev_coach = "";
     $counter_flag = 0;
     foreach ($status as $key => $value) {
@@ -23,18 +26,18 @@ function build_timeslot($date, $month, $year) {
           }
           $prev_coach = $value['coach'];
           $timeslot .= "<tr>";
-          $timeslot .= "<td>{$value['coach']}</td>";
+          $timeslot .= "<td class='coach_name'>{$value['coach']}</td>";
           $endtime_str = time_string_add($value['timeslot']);
           $final_start_time = substr_replace($value['timeslot'], ':', 2, 0);
           $final_end_time = substr_replace($endtime_str, ':', 2, 0);
           $timeslot_str = $final_start_time . ' - ' . $final_end_time;
-          $timeslot .= "<td>{$timeslot_str}</td>";
+          $timeslot .= "<td class='{$value['status']}'>{$timeslot_str}</td>";
         }else{
           $endtime_str = time_string_add($value['timeslot']);
           $final_start_time = substr_replace($value['timeslot'], ':', 2, 0);
           $final_end_time = substr_replace($endtime_str, ':', 2, 0);
           $timeslot_str = $final_start_time . ' - ' . $final_end_time;
-          $timeslot .= "<td>{$timeslot_str}</td>";
+          $timeslot .= "<td class='{$value['status']}'>{$timeslot_str}</td>";
         }
 
     }

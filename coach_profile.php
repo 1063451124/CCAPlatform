@@ -94,14 +94,18 @@
             //////////////////////////////////////
 
             function build_coach_profile(){
-
+                
                 require_once('coach_profile_model.php');
                 $coach_list = get_coach_profile();
                 $profile = "";
+
                 foreach ($coach_list as $key => $value){
+                    $dash_name = str_replace(" " , "_", $value['name']);
+                    $dash_name = str_replace("," , "_", $dash_name);
                     $pic_str = '<img src="data:image/png;base64,'.base64_encode($value["img"]).'"/>';
-                    $profile .= "<div class='container'>";
+                    $profile .= "<div class='container' id='{$dash_name}'>";
                     $profile .= "<div class='image'>{$pic_str}</div>";
+
                     $profile .= "<div class='name'><h3> <b>{$value["name"]}</b></h3></div>";
                     $profile .= "</div>";
                     $profile .= "<h4><i>{$value["career"]}</i></h4>";

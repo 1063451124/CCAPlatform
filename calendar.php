@@ -4,6 +4,7 @@
       //function: render calendar with data from model
       //////////////////////////////////////
 function build_calendar($month, $year) {
+
 	require('calendar_model.php');
 	$status = json_decode(get_month_status('03', '2023'),true);
 	$daysOfWeek = array('S','M','T','W','T','F','S');
@@ -39,13 +40,13 @@ function build_calendar($month, $year) {
 		// what is the status? by sunyt TODO: ajax & <a> link
 		if( array_key_exists($datekey,$status) == true){
 			if ($status[$datekey] == 0){
-				$style_date = 'table-danger';
+				$style_date = 'table-danger day';
 			}
 			elseif($status[$datekey] == 10){
-				$style_date = 'table-success';
+				$style_date = 'table-success day';
 			}
 			else{
-				$style_date = 'table-warning';
+				$style_date = 'table-warning day';
 			}
 		}
 		else{
@@ -54,9 +55,9 @@ function build_calendar($month, $year) {
 
 		// Is this today? by sunyt
 		if(date('Y-m-d') == $date) {
-			$calendar .= "<td class='day success $style_date' rel='$date'><b>$currentDay</b></td>";
+			$calendar .= "<td class='success $style_date' rel='$date'><b>$currentDay</b></td>";
 		} else {
-			$calendar .= "<td class='day $style_date' rel='$date'>$currentDay</td>";
+			$calendar .= "<td class='$style_date' rel='$date'>$currentDay</td>";
 		}
 
 		$currentDay++;
@@ -71,4 +72,5 @@ function build_calendar($month, $year) {
 	return $calendar;
 }
 
+  
 ?>
