@@ -168,7 +168,9 @@ var month = $("#month").val();
   var cell_value = $(this).text();
 
   cell_value = (cell_value.length >= 2) ? cell_value : "0"+cell_value ;
-  window.location.href = '/index.php?day='+cell_value ;
+  var year = $("#year").val();
+  var month = $("#month").val();
+  window.location.href = "/index.php?year="+year+"&month="+month+"&day="+cell_value;
 }
   )
       /*
@@ -182,6 +184,7 @@ var month = $("#month").val();
   var space_value = cell_value.replaceAll(" ","_");
   var dash_value = space_value.replaceAll(",","_");
  
+
   window.location.href = '/coach_profile.php#'+dash_value ;
 }
   )
