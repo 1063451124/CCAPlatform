@@ -82,12 +82,15 @@
 
             <select id ="month" class="form-select col-md-2" aria-label="Default select example">
             <?php
-                $current_month = date('m');
+                $day_time = isset($_GET['day']) ? $_GET['day'] : "01"; 
+                $month_time = isset($_GET['month']) ? $_GET['month'] : "03"; 
+                $year_time = isset($_GET['year']) ? $_GET['year'] : "2023"; 
+                #$current_month = date('m');
                 for ($month = 1; $month <= 12; $month++) {
-                  if ($month == $current_month) {
-                  echo "<option value='{$month}' selected>{$month}</option>";
+                  if ($month == $month_time) {
+                  echo "<option value='".sprintf("%02d", $month)."' selected>".sprintf("%02d", $month)."</option>";
                   } else {
-                  echo "<option value='{$month}'>{$month}</option>";
+                  echo "<option value='".sprintf("%02d", $month)."'>".sprintf("%02d", $month)."</option>";
                   }  
                 }
             ?>
@@ -112,9 +115,7 @@
       //////////////////////////////////////
 
         // $month = date('m') 
-        $day_time = isset($_GET['day']) ? $_GET['day'] : "01"; 
-        $month_time = isset($_GET['month']) ? $_GET['month'] : "03"; 
-        $year_time = isset($_GET['year']) ? $_GET['year'] : "2023"; 
+
         
         require 'calendar.php';
         $calendar = build_calendar($month_time, $year_time);
@@ -170,7 +171,7 @@ var month = $("#month").val();
   cell_value = (cell_value.length >= 2) ? cell_value : "0"+cell_value ;
   var year = $("#year").val();
   var month = $("#month").val();
-  window.location.href = "/index.php?year="+year+"&month="+month+"&day="+cell_value;
+  window.location.href = "/index.php?day="+cell_value+"&year="+year+"&month="+month;
 }
   )
       /*
