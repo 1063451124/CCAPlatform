@@ -35,7 +35,10 @@
     <link href="../assets/dist/css/signin.css" rel="stylesheet">
   </head>
   <body class="text-center">
-    
+<!--     
+author sunyt
+func login form → /signin_model.php
+-->
 <form class="form-signin" action="/signin_model.php" method="post">
   <img class="mb-4" src="cityu.png" alt="cityu_logo" width="300" height="85">
   <h1 class="h3 mb-3 font-weight-normal">Career Coach Appointment</h1>
