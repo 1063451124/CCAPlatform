@@ -2,11 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.101.0">
-    <title>Signin Template · Bootstrap v4.6</title>
+    <title>CityU Career Coach appointment</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.6/examples/sign-in/">
 
@@ -40,20 +36,17 @@
   </head>
   <body class="text-center">
     
-<form class="form-signin">
-  <img class="mb-4" src="cityu.png" alt="" width="300" height="85">
+<form class="form-signin" action="/signin_model.php" method="post">
+  <img class="mb-4" src="cityu.png" alt="cityu_logo" width="300" height="85">
   <h1 class="h3 mb-3 font-weight-normal">Career Coach Appointment</h1>
   <label for="inputEmail" class="sr-only">Student Number</label>
-  <input type="number" id="inputEmail" class="form-control" placeholder="Student Number" required autofocus>
+  <input type="number" name="snumber" class="form-control" placeholder="Student Number" required autofocus>
   <label for="inputPassword" class="sr-only">Password</label>
-  <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+  <input type="password" name="spwd" class="form-control" placeholder="Password" required>
   <div class="checkbox mb-3">
-    <label>
-      <input type="checkbox" value="remember-me"> Remember me
-    </label>
   </div>
   <button class="btn btn-lg btn-block" type="submit" style="background-color: #BF165E; color:white">Sign in</button>
-  <p class="mt-5 mb-3 text-muted">&copy; CS5281 2023 </p>
+  <p class="mt-5 mb-3 text-muted">&copy; Group CCA CS5281 2023 </p>
 </form>
 
 

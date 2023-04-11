@@ -6,6 +6,8 @@
   <div class="collapse navbar-collapse" id="navbarCollapse">
     <ul class="navbar-nav mr-auto">
       <?php
+      session_start();
+      
       //remember to add tags when adding new web pages
       $pages=array("/index.php"=>"Appointment","/profile.php"=>"Profile","/coach_profile.php"=>"Coaches");
       foreach ($pages as $key => $value){
@@ -34,5 +36,16 @@
       <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>-->
+  </div>
+  <div class="navbar-brand">Welcome! 
+    <?php 
+    // how you get session which is a public variable
+    if ($_SESSION["admin"] == false){
+      echo("Student: ");
+    } 
+    else {
+      echo("Teacher: ");
+      } 
+      echo($_SESSION["username"]);?>
   </div>
 </nav>
