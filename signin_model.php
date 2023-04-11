@@ -13,13 +13,13 @@ foreach ($posts as $key => $value) {
 $password = md5($posts["spwd"]);
 $username = $posts["snumber"];
 //$query = "SELECT `username` FROM `user` WHERE `password` = '$password' AND `username` = '$username'";
-//  取得查询结果
+//  fetch result
 //$userInfo = $DB->getRow($query);
 $userInfo = 233;
 if (!empty($userInfo)) {
-    //  当验证通过后，启动 Session
+    //  start Session when leagal
     session_start();
-    //  注册登陆成功的 admin 变量，并赋值 true
+    //  teachers for admin
     $_SESSION["admin"] = false;
     $_SESSION["username"] = $username;
     $url = "/index.php";
