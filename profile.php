@@ -84,6 +84,11 @@
         <input type="file" class="form-control-file" id="exampleFormControlFile1">
       </div>
 
+    <!--
+    By:duyulin 
+    checkbox 多选但至少选一个功能未实现
+
+    comment: implementation in Appointment tag
 
       <div class="form-group">
         <label>Prefer date</label><br>
@@ -93,15 +98,13 @@
         </select>
       </div>
 
-    <!--
-    By:duyulin 
-    checkbox 多选但至少选一个功能未实现
-    -->
+
+   
       <div class="form-group">
         <label>Prefer timeslot (You may choose more than one timeslot)</label>
         <input type="checkbox" class="form-control" name="timeslot" value="1">09:30 - 10:15
       </div>
-
+    -->
       <div class="form-group">
         <label>Desired work destination after graduation</label><br>
         <select name="destination" required>
