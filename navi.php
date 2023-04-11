@@ -7,7 +7,7 @@
     <ul class="navbar-nav mr-auto">
       <?php
       //remember to add tags when adding new web pages
-      $pages=array("/index.php"=>"Appointment","/profile.php"=>"Profile");
+      $pages=array("/index.php"=>"Appointment","/profile.php"=>"Profile","/coach_profile.php"=>"Coaches");
       foreach ($pages as $key => $value){
         if ($_SERVER['PHP_SELF'] == $key){
           print("<li class='nav-item active'>");
@@ -30,9 +30,9 @@
         <a class="nav-link disabled">Disabled</a>
       </li>-->
     </ul>
-    <form class="form-inline mt-2 mt-md-0">
+    <!--<form class="form-inline mt-2 mt-md-0">
       <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+    </form>-->
   </div>
 </nav>

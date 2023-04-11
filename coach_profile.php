@@ -72,7 +72,7 @@
 </head>
 
 <body>
-    <a class="introduction" target="_blank" href="/index.php">GO to make an appointment!</a>
+    <!--<a class="introduction" target="_blank" href="/index.php">GO to make an appointment!</a>-->
     <div class='container'><a href="https://www.cityu.edu.hk/" target="_blank"> <img  src="cityu.png" alt="City University" height=100></a></div>
     <center>
         <h2><u>Career Coach Profile</u></h2>
@@ -84,6 +84,8 @@
   ?>
 
   <main role="main" class="container">
+
+
 
     <div class="row">
 
@@ -102,18 +104,23 @@
                 foreach ($coach_list as $key => $value){
                     $dash_name = str_replace(" " , "_", $value['name']);
                     $dash_name = str_replace("," , "_", $dash_name);
-                    $pic_str = '<img src="data:image/png;base64,'.base64_encode($value["img"]).'"/>';
-                    $profile .= "<div class='container' id='{$dash_name}'>";
-                    $profile .= "<div class='image'>{$pic_str}</div>";
-
-                    $profile .= "<div class='name'><h3> <b>{$value["name"]}</b></h3></div>";
+                    $pic_str = "<img src='data:image/png;base64,".base64_encode($value["img"])."'  class='image rounded mx-auto d-block'>";
+                    $profile .= "<div class='row' id='{$dash_name}'>";
+                    $profile .= "<div class='image col-md-4'>";
+                    $profile .= "<div>{$pic_str}</div>";
                     $profile .= "</div>";
+                    $profile .= "<div class='info col-md-6'>";
+                    $profile .= "<div class='name'><h3> <b>{$value["name"]}</b></h3></div>";
                     $profile .= "<h4><i>{$value["career"]}</i></h4>";
-                    $profile .= "<br><br>";
+                    $profile .= "<p><b>Familiar industries and job function: </b><br>{$value["industries"]}</p>";
+                    //$profile .= "<br><br>";
                     $style_str = 'style="font-size: 22px;"';
+                    
+                    $profile .= "</div>";
+                    $profile .= "</div>";
                     $profile .= "<p {$style_str}>{$value["detail"]}</p>";
                     $profile .= "<br>";
-                    $profile .= "<p>Familiar industries and job function: <br><b>{$value["industries"]}</b></p>";
+
                     #$profile .="<br><br>";
                     $profile .= "<hr>";
 

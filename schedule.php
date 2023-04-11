@@ -26,7 +26,7 @@ function build_timeslot($date, $month, $year) {
           }
           $prev_coach = $value['coach'];
           $timeslot .= "<tr>";
-          $timeslot .= "<td class='coach_name'>{$value['coach']}</td>";
+          $timeslot .= "<td class='coach_name' data-toggle='tooltip' data-placement='bottom' title='Industry: {$value['industry']}'>{$value['coach']}</td>";
           $endtime_str = time_string_add($value['timeslot']);
           $final_start_time = substr_replace($value['timeslot'], ':', 2, 0);
           $final_end_time = substr_replace($endtime_str, ':', 2, 0);

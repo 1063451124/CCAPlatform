@@ -13,7 +13,7 @@ function build_calendar($month, $year) {
 	$dateComponents = getdate($firstDayOfMonth);
 	$monthName = $dateComponents['month'];
 	$dayOfWeek = $dateComponents['wday'];
-	$calendar = "<table class='calendar table table-bordered table-hover'>";
+	$calendar = "<table class='calendar table table-bordered'>";
 	$calendar .= "<caption  id = 'tbs'>$monthName $year</caption>";
 	$calendar .= "<tr>";
 	foreach($daysOfWeek as $day) {
@@ -43,10 +43,10 @@ function build_calendar($month, $year) {
 				$style_date = 'table-danger day';
 			}
 			elseif($status[$datekey] == 10){
-				$style_date = 'table-success day';
+				$style_date = 'table-success day selectable';
 			}
 			else{
-				$style_date = 'table-warning day';
+				$style_date = 'table-warning day selectable';
 			}
 		}
 		else{

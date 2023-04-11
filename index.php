@@ -33,13 +33,19 @@
     .available {
     background-color: #c3e6cb; 
     }
+
     .booked{
       background-color: #dc3545; 
     }
     .coach_name:hover {
   background-color: #6c757dbf; 
+  cursor:Pointer;
 }
 
+.selectable:hover {
+  background-color: #6c757dbf; 
+  cursor:Pointer;
+}
     @media (min-width: 768px) {
       .bd-placeholder-img-lg {
         font-size: 3.5rem;
@@ -54,7 +60,7 @@
 </head>
 
 <body>
-
+ 
   <?php
   require "./navi.php";
   ?>
@@ -68,7 +74,7 @@
     <div class="reminder"> ** origin <a class="introduction" target="_blank"
         href="https://cityuhk.questionpro.com/a/TakeSurvey?tt=XUT1Bc3X%2BesECHrPeIW9eQ%3D%3D">HERE</a></div>
     
-
+    <div class="reminder"> ** Hover on the coach name for familiar industries & job function and Click for detail</div>
           
         <div class="reminder">
         <div class="row">
