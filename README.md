@@ -6,4 +6,4 @@ in WNMP mode
 
 Recommend dir: WWW/your_dir/this_project
 
-see mysql init in db_init.sql
+see mysql init in latest dump file
