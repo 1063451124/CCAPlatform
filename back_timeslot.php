@@ -76,13 +76,13 @@
         </h6>
         <ul class="nav flex-column mb-2">
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="/back_timeslot.php">
               <span data-feather="file-text"></span>
               Timeslot Management 
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="/back_coach.php">
               <span data-feather="file-text"></span>
               Coach Management
             </a>
