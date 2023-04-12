@@ -77,7 +77,6 @@
     <center>
         <h2><u>Career Coach Profile</u></h2>
     </center>
-    <hr>
 
   <?php
   require "./navi.php";
@@ -105,7 +104,8 @@
                     $dash_name = str_replace(" " , "_", $value['name']);
                     $dash_name = str_replace("," , "_", $dash_name);
                     $pic_str = "<img src='data:image/png;base64,".base64_encode($value["img"])."'  class='image rounded mx-auto d-block'>";
-                    $profile .= "<div class='row' id='{$dash_name}'>";
+                    $profile .= "<hr  id='{$dash_name}'>";
+                    $profile .= "<div class='row'>";
                     $profile .= "<div class='image col-md-4'>";
                     $profile .= "<div>{$pic_str}</div>";
                     $profile .= "</div>";
@@ -122,7 +122,7 @@
                     $profile .= "<br>";
 
                     #$profile .="<br><br>";
-                    $profile .= "<hr>";
+                    
 
                 }
                 return $profile;

@@ -41,7 +41,10 @@
 <body>
 
   <?php
+  session_start();
   require "./navi.php";
+  require 'profile_model.php';
+  $userinfo = get_profile($_SESSION["username"])[0];
   ?>
 
   <main role="main" class="container align-middle">
@@ -50,7 +53,7 @@
       before choosing your preferred timeslot.</div>
     <div class="reminder"> ** origin <a class="introduction" target="_blank"
         href="https://cityuhk.questionpro.com/a/TakeSurvey?tt=XUT1Bc3X%2BesECHrPeIW9eQ%3D%3D">HERE</a></div>
-
+    <div class="reminder">Profile last modified at: <?php echo($userinfo['last_modify_time']);?> </a></div>
     <!--
     By:duyulin 
     profile要求填写的信息
@@ -59,29 +62,31 @@
     <form action="http://www.abc.com/" method="get">
       <div class="form-group">
         <label for="formGroupExampleInput" class="control-label" >First Name </label>
-        <input type="text" class="form-control" id="#" placeholder="" required>
+        <input type="text" class="form-control" id="#" value="<?php echo($userinfo['first_name']);?>" placeholder="" required>
       </div>
 
       <div class="form-group">
         <label>Last Name</label>
-        <input type="text" class="form-control" id="LastName" required>
+        <input type="text" class="form-control" id="LastName" value="<?php echo($userinfo['last_name']);?>" required>
       </div>
+       <!--
       <div class="form-group">
         <label>Student ID</label>
-        <input type="text" class="form-control" id="StudentID" required>
+        <input type="text" class="form-control" id="StudentID" value="<?php echo($userinfo['first_name']);?>" required>
       </div>
+         -->
       <div class="form-group">
         <label>HK Mobile</label>
-        <input type="text" class="form-control" id="HKMobile" required>
+        <input type="text" class="form-control" id="HKMobile" value="<?php echo($userinfo['hk_mobile_no']);?>" required>
       </div>
       <div class="form-group">
         <label>CityU Email Address</label>
-        <input type="email" class="form-control" id="CityU Email Address" required>
+        <input type="email" class="form-control" id="CityU Email Address" value="<?php echo($userinfo['cityu_email']);?>" required>
       </div>
 
       <div class="form-group">
         <label for="exampleFormControlFile1">Update your CV</label>
-        <input type="file" class="form-control-file" id="exampleFormControlFile1">
+        <input type="file" class="form-control-file" id="exampleFormControlFile1" value="<?php echo($userinfo['cv']);?>" >
       </div>
 
     <!--
@@ -105,10 +110,11 @@
         <input type="checkbox" class="form-control" name="timeslot" value="1">09:30 - 10:15
       </div>
     -->
+    <!-- comment use php to print the 2 select below so that saved options are selected -->
       <div class="form-group">
         <label>Desired work destination after graduation</label><br>
         <select name="destination" required>
-         <option value="HongKong">HongKong</option>
+         <option value="Hong Kong">Hong Kong</option>
          <option value="Mainland China">Mainland China</option>
          <option value="Macao">Macao</option>
          <option value="Taiwan">Taiwan</option>
@@ -129,7 +135,7 @@
       </div>
       <div class="form-group">
         <label>Wechat ID (Optional)</label>
-        <input type="text" class="form-control" id="WechatID" >
+        <input type="text" class="form-control" id="WechatID" value="<?php echo($userinfo['wechat_id']);?>">
       </div>
       <input type="submit" value="Done">
 

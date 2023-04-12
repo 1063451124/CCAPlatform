@@ -1,5 +1,8 @@
 <?php
-#TODO: fixed input
+////
+//author sunyt
+//func get timeslot of a single day
+////
 function get_timeslot_status($date="20230301"){
     require_once 'db_conn.php';
     $conn = get_conn();
@@ -27,5 +30,31 @@ function get_timeslot_status($date="20230301"){
     #print_r($ret);
     return $ret;
 }
+function verify(){
+    include "public/KgCaptchaSDK.php";
+// 填写你的 AppId，在应用管理中获取
+$appId = "xxx";
+// 填写你的 AppSecret，在应用管理中获取
+$appSecret = "W68oJi0iqT2C3BFRGirO1IaYCDvsYEED";
+$request = new kgCaptcha($appId, $appSecret);
+// 填写应用服务域名，在应用管理中获取
+$request->appCdn = "https://cdn.kgcaptcha.com";
+// 前端验证成功后颁发的 token，有效期为两分钟
+$request->token = $_POST["kgCaptchaToken"];
+// 当安全策略中的防控等级为3时必须填写
+$request->userId = "kgCaptchaDemo";
+// 请求超时时间，秒
+$request->connectTimeout = 10;
+$requestResult = $request->sendRequest();
+if ($requestResult->code === 0) {
+    // 验签成功逻辑处理
+    echo "验证通过";
+} else {
+    // 验签失败逻辑处理
+    echo "验证失败，错误代码：{$requestResult->code}， 错误信息：{$requestResult->msg}";
+}
+}
+
+
 
 ?>
