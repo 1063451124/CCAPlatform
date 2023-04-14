@@ -4,17 +4,21 @@
       //function: build timeslot with input date
       //////////////////////////////////////
 define("SESSION_DURATION", 45);
-function build_timeslot($date, $month, $year) {
+function build_timeslot($date, $month, $year,$snum) {
     require_once('schedule_model.php');
     #TODO: fixed input
     #DONE by STEVEN
     $time_input = $year.''.$month.''.$date;
 
+    if ($time_input <= date('Ymd')){
+      return '';
+    }
     $timeslot = "<table class='table col-md-8 table-bordered' id='schedule'>";
     $timeslot .= "<caption id='tbs'>{$month}.{$date}.{$year}</caption>";
 
     $status = get_timeslot_status($time_input);
 
+    
     $prev_coach = "";
     $counter_flag = 0;
     foreach ($status as $key => $value) {
@@ -31,19 +35,29 @@ function build_timeslot($date, $month, $year) {
           $final_start_time = substr_replace($value['timeslot'], ':', 2, 0);
           $final_end_time = substr_replace($endtime_str, ':', 2, 0);
           $timeslot_str = $final_start_time . ' - ' . $final_end_time;
-          $timeslot .= "<td class='{$value['status']}'>{$timeslot_str}</td>";
+          if ($value['booker'] == $snum){
+            $timeslot .= "<td class='table-warning currentapp' data-toggle='tooltip' data-placement='bottom' title='Current Appointment'>{$timeslot_str}</td>";
+          }
+          else{
+            $timeslot .= "<td class='{$value['status']}'>{$timeslot_str}</td>";
+          }
+          
         }else{
           $endtime_str = time_string_add($value['timeslot']);
           $final_start_time = substr_replace($value['timeslot'], ':', 2, 0);
           $final_end_time = substr_replace($endtime_str, ':', 2, 0);
           $timeslot_str = $final_start_time . ' - ' . $final_end_time;
-          $timeslot .= "<td class='{$value['status']}'>{$timeslot_str}</td>";
+          if ($value['booker'] == $snum){
+            $timeslot .= "<td class='table-warning currentapp' data-toggle='tooltip' data-placement='bottom' title='Current Appointment'>{$timeslot_str}</td>";
+          }
+          else{
+            $timeslot .= "<td class='{$value['status']}'>{$timeslot_str}</td>";
+          }
         }
 
     }
     $timeslot .= "</tr>";
     $timeslot .= "</table>";
-    #print($timeslot);
 
     return $timeslot;
 }

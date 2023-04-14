@@ -151,7 +151,14 @@
   <script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')</script>
   <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 
-
+  <br><br><br><br>
+  <footer class="sticky-footer">
+                <div>
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright © City University of Hong Kong</span>
+                    </div>
+                </div>
+            </footer>
 </body>
 
 </html>

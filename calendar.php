@@ -3,10 +3,11 @@
       //author: sunyt、
       //function: render calendar with data from model
       //////////////////////////////////////
+	  require('calendar_model.php');
 function build_calendar($month, $year) {
 
-	require('calendar_model.php');
-	$status = json_decode(get_month_status('03', '2023'),true);
+	
+	$status = json_decode(get_month_status($month, $year),true);
 	$daysOfWeek = array('S','M','T','W','T','F','S');
 	$firstDayOfMonth = mktime(0,0,0,$month,1,$year);
 	$numberDays = date('t',$firstDayOfMonth);
@@ -39,8 +40,11 @@ function build_calendar($month, $year) {
 
 		// what is the status? by sunyt TODO: ajax & <a> link
 		if( array_key_exists($datekey,$status) == true){
-			if ($status[$datekey] == 0){
-				$style_date = 'table-danger day';
+			if ($datekey <= date('Ymd')){
+				$style_date = 'unselectable';
+			}
+			elseif ($status[$datekey] == 0){
+				$style_date = 'table-danger day selectable';
 			}
 			elseif($status[$datekey] == 10){
 				$style_date = 'table-success day selectable';
@@ -72,5 +76,10 @@ function build_calendar($month, $year) {
 	return $calendar;
 }
 
+function get_lastdate($sid){
+	//require_once('calendar_model.php');
+	echo get_last_date($sid);
+	
+}
   
 ?>

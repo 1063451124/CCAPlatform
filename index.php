@@ -33,7 +33,9 @@
     .available {
     background-color: #c3e6cb; 
     }
-
+    .unselectable{
+      background-color: #6c757dbf;
+    }
     .booked{
       background-color: #dc3545; 
     }
@@ -41,7 +43,17 @@
   background-color: #6c757dbf; 
   cursor:Pointer;
 }
-
+.currentapp{animation: glow 800ms ease-out infinite alternate; }
+@keyframes glow {
+    0% {
+        border-color: yellow;
+        box-shadow: 0 0 10px rgba(255,255,0,.2), inset 0 0 10px rgba(255,255,0,.1), 0 5px 0 yellow;
+    }
+    100% {
+        border-color: yellow;
+        box-shadow: 0 0 40px rgba(255,255,0,.6), inset 0 0 20px rgba(255,255,0,.4), 0 5px 0 yellow;
+    }
+}
 .selectable:hover {
   background-color: #6c757dbf; 
   cursor:Pointer;
@@ -75,7 +87,14 @@
         href="https://cityuhk.questionpro.com/a/TakeSurvey?tt=XUT1Bc3X%2BesECHrPeIW9eQ%3D%3D">HERE</a></div>
     
     <div class="reminder"> ** Hover on the coach name for familiar industries & job function and Click for detail</div>
-          
+    <div class="reminder"> ** Find vacancy in yellow and green colored date.</div>
+    <div class="reminder"> ** Your current appointment: <b>
+      <?php
+      require 'calendar.php';
+      $ld = get_lastdate($_SESSION["username"]);
+      echo($ld)
+      ?>
+    </b></div>      
         <div class="reminder">
         <div class="row">
             <div class="col-md-2" style="align-items: center;">Select Year:</div>
@@ -88,12 +107,12 @@
 
             <select id ="month" class="form-select col-md-2" aria-label="Default select example">
             <?php
-                $day_time = isset($_GET['day']) ? $_GET['day'] : "01"; 
-                $month_time = isset($_GET['month']) ? $_GET['month'] : "03"; 
-                $year_time = isset($_GET['year']) ? $_GET['year'] : "2023"; 
-                #$current_month = date('m');
+                $day_time = isset($_GET['day']) ? $_GET['day'] : date('d'); 
+                $month_time = isset($_GET['month']) ? $_GET['month'] : date('m'); 
+                $year_time = isset($_GET['year']) ? $_GET['year'] : date('Y'); 
+                $current_month = date('m');
                 for ($month = 1; $month <= 12; $month++) {
-                  if ($month == $month_time) {
+                  if ($month == $current_month) {
                   echo "<option value='".sprintf("%02d", $month)."' selected>".sprintf("%02d", $month)."</option>";
                   } else {
                   echo "<option value='".sprintf("%02d", $month)."'>".sprintf("%02d", $month)."</option>";
@@ -123,7 +142,7 @@
         // $month = date('m') 
 
         
-        require 'calendar.php';
+        
         $calendar = build_calendar($month_time, $year_time);
         $calendar = '<div>' . $calendar . '</div>';
         $calendar .= '<style type="text/css">table tbody tr td, table tbody tr th { text-align: center; }</style>';
@@ -136,7 +155,7 @@
       //function: show timeslot
       //////////////////////////////////////
         require 'schedule.php';
-        $timeslot = build_timeslot($day_time, $month_time , $year_time );
+        $timeslot = build_timeslot($day_time, $month_time , $year_time, $_SESSION["username"]);
         #$timeslot = '<div>' . $timeslot . '</div>';
         #$timeslot .= '<style type="text/css">table tbody tr td, table tbody tr th { text-align: center; }</style>';
         print($timeslot);
@@ -191,8 +210,8 @@ var month = $("#month").val();
   var space_value = cell_value.replaceAll(" ","_");
   var dash_value = space_value.replaceAll(",","_");
  
-
-  window.location.href = '/coach_profile.php#'+dash_value ;
+  window.open('/coach_profile.php#'+dash_value,'target','');
+  //window.location.href = '/coach_profile.php#'+dash_value ;
 }
   )
 
