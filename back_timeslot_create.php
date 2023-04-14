@@ -64,7 +64,7 @@
 </nav>
 
 <div class="container-fluid">
-<div class="row">
+  <div class="row">
     <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
       <div class="sidebar-sticky pt-3">
         <ul class="nav flex-column">
@@ -133,24 +133,24 @@
 
       <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
 -->
-<h2 style="padding: 20px;">Coaches Information Management</h2>
-<div class="table-responsive row">
-    <table class="table table-striped table-sm">
-        <thead>
-            <tr>
-                <th style="width: 160px;">Name</th>
-                <th class="col-md-3">Industries</th>
-                <th class="col-md-9">Detail</th>
-                <th style="width: 120px;">Actions</th>
-            </tr>
-        </thead>
-        <tbody>
+<h2>Add Timeslot</h2>
+    <form method="post" action="back_create_timeslot.php">
+        <label for="date_timeslot">Date/Timeslot:</label>
+        <input type="text" id="date_timeslot" name="date_timeslot" required><br>
+
+        <label for="book_date">Book Date:</label>
+        <input type="text" id="book_date" name="book_date"><br>
+
+        <label for="timeslot">Timeslot:</label>
+        <input type="text" id="timeslot" name="timeslot"><br>
+
+        <label for="coach">Coach:</label>
+        <select id="coach" name="coach">
             <?php
-            //Ekko
             // Connect to the database
             $host = "localhost";
             $username = "root";
-            $password = "root";
+            $password = "";
             $dbname = "cca";
             $conn = mysqli_connect($host, $username, $password, $dbname);
 
@@ -160,161 +160,27 @@
             }
 
             // Retrieve coaches from the database
-            $sql = "SELECT * FROM coach";
+            $sql = "SELECT name FROM coach";
             $result = mysqli_query($conn, $sql);
 
             if (mysqli_num_rows($result) > 0) {
                 // Output data of each row
                 while($row = mysqli_fetch_assoc($result)) {
-                    echo "<tr>";
-                    echo "<td>" . $row["name"] . "</td>";
-                    echo "<td data-toggle='tooltip' data-placement='bottom' title='{$row["industries"]}'>" . $row["industries"] . "</td>";
-                    echo "<td data-toggle='tooltip' data-placement='bottom' title='{$row["detail"]}'>" . $row["detail"] . "</td>";
-                    echo "<td><a href='back_edit.php?name=" . $row["name"] . "'>Edit</a> | <a href='back_delete.php?name=" . $row["name"] . "'>Delete</a></td>";
-                    echo "</tr>";
+                    echo "<option value='" . $row["name"] . "'>" . $row["name"] . "</option>";
                 }
             } else {
-                echo "<tr><td colspan='4'>No coaches found.</td></tr>";
+                echo "<option value=''>No coaches found.</option>";
             }
 
             mysqli_close($conn);
             ?>
-        </tbody>
-    </table>
-    </div>
-<!--
-      <h2>Section title</h2>
-      <div class="table-responsive">
-        <table class="table table-striped table-sm">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Header</th>
-              <th>Header</th>
-              <th>Header</th>
-              <th>Header</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1,001</td>
-              <td>random</td>
-              <td>data</td>
-              <td>placeholder</td>
-              <td>text</td>
-            </tr>
-            <tr>
-              <td>1,002</td>
-              <td>placeholder</td>
-              <td>irrelevant</td>
-              <td>visual</td>
-              <td>layout</td>
-            </tr>
-            <tr>
-              <td>1,003</td>
-              <td>data</td>
-              <td>rich</td>
-              <td>dashboard</td>
-              <td>tabular</td>
-            </tr>
-            <tr>
-              <td>1,003</td>
-              <td>information</td>
-              <td>placeholder</td>
-              <td>illustrative</td>
-              <td>data</td>
-            </tr>
-            <tr>
-              <td>1,004</td>
-              <td>text</td>
-              <td>random</td>
-              <td>layout</td>
-              <td>dashboard</td>
-            </tr>
-            <tr>
-              <td>1,005</td>
-              <td>dashboard</td>
-              <td>irrelevant</td>
-              <td>text</td>
-              <td>placeholder</td>
-            </tr>
-            <tr>
-              <td>1,006</td>
-              <td>dashboard</td>
-              <td>illustrative</td>
-              <td>rich</td>
-              <td>data</td>
-            </tr>
-            <tr>
-              <td>1,007</td>
-              <td>placeholder</td>
-              <td>tabular</td>
-              <td>information</td>
-              <td>irrelevant</td>
-            </tr>
-            <tr>
-              <td>1,008</td>
-              <td>random</td>
-              <td>data</td>
-              <td>placeholder</td>
-              <td>text</td>
-            </tr>
-            <tr>
-              <td>1,009</td>
-              <td>placeholder</td>
-              <td>irrelevant</td>
-              <td>visual</td>
-              <td>layout</td>
-            </tr>
-            <tr>
-              <td>1,010</td>
-              <td>data</td>
-              <td>rich</td>
-              <td>dashboard</td>
-              <td>tabular</td>
-            </tr>
-            <tr>
-              <td>1,011</td>
-              <td>information</td>
-              <td>placeholder</td>
-              <td>illustrative</td>
-              <td>data</td>
-            </tr>
-            <tr>
-              <td>1,012</td>
-              <td>text</td>
-              <td>placeholder</td>
-              <td>layout</td>
-              <td>dashboard</td>
-            </tr>
-            <tr>
-              <td>1,013</td>
-              <td>dashboard</td>
-              <td>irrelevant</td>
-              <td>text</td>
-              <td>visual</td>
-            </tr>
-            <tr>
-              <td>1,014</td>
-              <td>dashboard</td>
-              <td>illustrative</td>
-              <td>rich</td>
-              <td>data</td>
-            </tr>
-            <tr>
-              <td>1,015</td>
-              <td>random</td>
-              <td>tabular</td>
-              <td>information</td>
-              <td>text</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </main>
-  </div>
-</div>
---> 
+        </select><br>
+
+        <label for="booker">Booker:</label>
+        <input type="text" id="booker" name="booker"><br>
+
+        <input type="submit" value="Add">
+    </form>
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
       <script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="../assets/dist/js/bootstrap.bundle.min.js"></script>

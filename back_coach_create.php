@@ -133,55 +133,22 @@
 
       <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
 -->
-<h2 style="padding: 20px;">Coaches Information Management</h2>
-<div class="table-responsive row">
-    <table class="table table-striped table-sm">
-        <thead>
-            <tr>
-                <th style="width: 160px;">Name</th>
-                <th class="col-md-3">Industries</th>
-                <th class="col-md-9">Detail</th>
-                <th style="width: 120px;">Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-            //Ekko
-            // Connect to the database
-            $host = "localhost";
-            $username = "root";
-            $password = "root";
-            $dbname = "cca";
-            $conn = mysqli_connect($host, $username, $password, $dbname);
+<h2>Add Coach</h2>
+    <form method="post" action="back_create_coach.php">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br>
 
-            // Check connection
-            if (!$conn) {
-                die("Connection failed: " . mysqli_connect_error());
-            }
+        <label for="industries">Industries:</label>
+        <input type="text" id="industries" name="industries"><br>
 
-            // Retrieve coaches from the database
-            $sql = "SELECT * FROM coach";
-            $result = mysqli_query($conn, $sql);
+        <label for="detail">Detail:</label>
+        <textarea id="detail" name="detail"></textarea><br>
 
-            if (mysqli_num_rows($result) > 0) {
-                // Output data of each row
-                while($row = mysqli_fetch_assoc($result)) {
-                    echo "<tr>";
-                    echo "<td>" . $row["name"] . "</td>";
-                    echo "<td data-toggle='tooltip' data-placement='bottom' title='{$row["industries"]}'>" . $row["industries"] . "</td>";
-                    echo "<td data-toggle='tooltip' data-placement='bottom' title='{$row["detail"]}'>" . $row["detail"] . "</td>";
-                    echo "<td><a href='back_edit.php?name=" . $row["name"] . "'>Edit</a> | <a href='back_delete.php?name=" . $row["name"] . "'>Delete</a></td>";
-                    echo "</tr>";
-                }
-            } else {
-                echo "<tr><td colspan='4'>No coaches found.</td></tr>";
-            }
+        <label for="img">Image:</label>
+        <input type="file" id="img" name="img"><br>
 
-            mysqli_close($conn);
-            ?>
-        </tbody>
-    </table>
-    </div>
+        <input type="submit" value="Add">
+    </form>
 <!--
       <h2>Section title</h2>
       <div class="table-responsive">

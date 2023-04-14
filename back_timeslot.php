@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.101.0">
-    <title>Dashboard Template · Bootstrap v4.6</title>
+    <title>Career Coach Management</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.6/examples/dashboard/">
 
@@ -85,6 +85,18 @@
             <a class="nav-link" href="/back_coach.php">
               <span data-feather="file-text"></span>
               Coach Management
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/back_timeslot_create.php">
+              <span data-feather="file-text"></span>
+              Timeslot Create 
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/back_coach_create.php">
+              <span data-feather="file-text"></span>
+              Coach Create
             </a>
           </li>
            <!--
