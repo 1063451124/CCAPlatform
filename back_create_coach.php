@@ -1,5 +1,6 @@
-//Ekko
+
 <?php
+// Ekko
 // Check if the form has been submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -54,7 +55,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Prepare and bind the SQL statement
     $stmt = $conn->prepare("INSERT INTO coaches (name, industries, detail, img) VALUES (?, ?, ?, ?)");
-    $stmt->bind_param("ssss", $name, $industries, $detail, $img_name);
 
     // Save the image file and get its name
     if (!empty($img["name"])) {
@@ -63,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
       $img_name = null;
     }
-
+    $stmt->bind_param("ssss", $name, $industries, $detail, $img_name);
     // Execute the statement and check for errors
     if ($stmt->execute()) {
       // Redirect to the coaches list page
