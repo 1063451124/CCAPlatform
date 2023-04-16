@@ -54,96 +54,119 @@
     <div class="reminder"> ** origin <a class="introduction" target="_blank"
         href="https://cityuhk.questionpro.com/a/TakeSurvey?tt=XUT1Bc3X%2BesECHrPeIW9eQ%3D%3D">HERE</a></div>
     <div class="reminder">Profile last modified at: <?php echo($userinfo['last_modify_time']);?> </a></div>
+
     <!--
     By:duyulin 
-    profile要求填写的信息
+    profile要求填写的信息  
     -->
 
-    <form action="http://www.abc.com/" method="get">
-      <div class="form-group">
-        <label for="formGroupExampleInput" class="control-label" >First Name </label>
-        <input type="text" class="form-control" id="#" value="<?php echo($userinfo['first_name']);?>" placeholder="" required>
+    <form method="post" action="profile_model.php" onsubmit="return check();" enctype="multipart/form-data">
+    <div class="form-group">
+        <label>First Name </label>
+        <input type="text" class="form-control" name="FirstName" value="<?php echo($userinfo['first_name']);?>" placeholder="" required>
       </div>
 
       <div class="form-group">
         <label>Last Name</label>
-        <input type="text" class="form-control" id="LastName" value="<?php echo($userinfo['last_name']);?>" required>
+        <input type="text" class="form-control" name="LastName" value="<?php echo($userinfo['last_name']);?>" required>
       </div>
+
        <!--
       <div class="form-group">
         <label>Student ID</label>
         <input type="text" class="form-control" id="StudentID" value="<?php echo($userinfo['first_name']);?>" required>
       </div>
          -->
+		 
       <div class="form-group">
         <label>HK Mobile</label>
-        <input type="text" class="form-control" id="HKMobile" value="<?php echo($userinfo['hk_mobile_no']);?>" required>
+        <input type="text" class="form-control" name="HKMobile" id="HKMobile" value="<?php echo($userinfo['hk_mobile_no']);?>" required>
       </div>
       <div class="form-group">
         <label>CityU Email Address</label>
-        <input type="email" class="form-control" id="CityU Email Address" value="<?php echo($userinfo['cityu_email']);?>" required>
+        <input type="email" class="form-control" name="CityUEmail" value="<?php echo($userinfo['cityu_email']);?>" required>
       </div>
 
       <div class="form-group">
-        <label for="exampleFormControlFile1">Update your CV</label>
-        <input type="file" class="form-control-file" id="exampleFormControlFile1" value="<?php echo($userinfo['cv']);?>" >
+        <label>Update your CV</label>
+        <input type="file" class="form-control-file" name="CV" id="CV" accept=".gif,.jpg,.jpeg,.png,.GIF,.JPG,.PNG"  value="<?php $userinfo["cv"];?>" >
+        <?php 
+    //print_r($userinfo);
+    echo "<img src='data:".$userinfo["file_type"].";base64,".base64_encode($userinfo["cv"])."'  class='image rounded mx-auto d-block'>";
+    ?>
       </div>
-
-    <!--
-    By:duyulin 
-    checkbox 多选但至少选一个功能未实现
-
-    comment: implementation in Appointment tag
-
-      <div class="form-group">
-        <label>Prefer date</label><br>
-        <select name="date" required>
-         <option value="27 March 2023(Monday)">27 March 2023(Monday)</option>
-         <option value="30 March 2023(Thursday)">30 March 2023(Thursday)</option>
-        </select>
-      </div>
-
-
-   
-      <div class="form-group">
-        <label>Prefer timeslot (You may choose more than one timeslot)</label>
-        <input type="checkbox" class="form-control" name="timeslot" value="1">09:30 - 10:15
-      </div>
-    -->
-    <!-- comment use php to print the 2 select below so that saved options are selected -->
-      <div class="form-group">
+      
+	  <div class="form-group">
         <label>Desired work destination after graduation</label><br>
         <select name="destination" required>
-         <option value="Hong Kong">Hong Kong</option>
-         <option value="Mainland China">Mainland China</option>
-         <option value="Macao">Macao</option>
-         <option value="Taiwan">Taiwan</option>
-         <option value="Notsure">Not sure</option>
+		<?php
+		$x=array("Hong Kong","Mainland China","Macao","Taiwan","Not Sure");
+		foreach ($x as $value){
+			if($value==$userinfo['work_location']){
+				echo "<option value='".$value."' selected>$value</option>";
+			}
+			else{
+				echo "<option value='".$value."' >$value</option>";
+			}
+		}
+		?>
         </select>
       </div>
-      <div class="form-group">
+	  
+	  <div class="form-group">
         <label>Purpose of the consultation</label><br>
         <select name="purpose" required>
-         <option value="1">CV and Cover Letter Review</option>
-         <option value="2">Career Planning</option>
-         <option value="3">Interview Skills</option>
-         <option value="4">Job application advertising</option>
-         <option value="5">Career Direction</option>
-         <option value="6">Job Search Techniques</option>
-         <option value="7">Professional Development</option>
+		<?php
+		$x=array("CV and Cover Letter Review","Career Planning","Interview Skills","Job application advertising",
+		"Career Direction","Job Search Techniques","Professional Development");
+		foreach ($x as $value){
+			if($value==$userinfo['purpose']){
+				echo "<option value='".$value."' selected>$value</option>";
+			}
+			else{
+				echo "<option value='".$value."' >$value</option>";
+			}
+		}
+		?>
         </select>
       </div>
+
       <div class="form-group">
         <label>Wechat ID (Optional)</label>
-        <input type="text" class="form-control" id="WechatID" value="<?php echo($userinfo['wechat_id']);?>">
+        <input type="text" class="form-control" name="WechatID" value="<?php echo($userinfo['wechat_id']);?>">
       </div>
-      <input type="submit" value="Done">
+      <input type="submit" name="action" value="Update">
 
 
     </form>
+</main>
 
-  </main>
+<script>
+// author
+//func
+ function check() {
+   alert("Are you sure to submit?");
+	 var p = /^\d{8}$/;
+	 var hkmobileno = document.getElementById('HKMobile').value;
+	 if (!p.test(hkmobileno)){
+		 alert("Error mobile format, please check.");
+		 //return false;
+	 }
+  //author sunyt
+ //func verify file format
+ var files = document.getElementById('CV').files;  
+    var fileSize = 0;
+    if(files.length!=0){
+        fileSize = files[0].size/1024/1024;
+    }
+    if(fileSize > 5){
+        alert("File not larger than 5M, please check.");
+        return false;
+    }
+ }
 
+
+</script>
 
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -151,14 +174,7 @@
   <script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')</script>
   <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 
-  <br><br><br><br>
-  <footer class="sticky-footer">
-                <div>
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright © City University of Hong Kong</span>
-                    </div>
-                </div>
-            </footer>
+
 </body>
 
 </html>

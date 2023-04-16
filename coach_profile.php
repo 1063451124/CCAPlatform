@@ -103,7 +103,7 @@
                 foreach ($coach_list as $key => $value){
                     $dash_name = str_replace(" " , "_", $value['name']);
                     $dash_name = str_replace("," , "_", $dash_name);
-                    $pic_str = "<img src='data:image/png;base64,".base64_encode($value["img"])."'  class='image rounded mx-auto d-block'>";
+                    $pic_str = "<img src='data:".$value["file_type"].";base64,".base64_encode($value["img"])."'  class='image rounded mx-auto d-block'>";
                     $profile .= "<hr  id='{$dash_name}'>";
                     $profile .= "<div class='row'>";
                     $profile .= "<div class='image col-md-4'>";

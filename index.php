@@ -149,6 +149,7 @@
         print($calendar);
         ?>
       </div>
+   
       <?php
       //////////////////////////////////////
       //author: LIN
@@ -160,7 +161,8 @@
         #$timeslot .= '<style type="text/css">table tbody tr td, table tbody tr th { text-align: center; }</style>';
         print($timeslot);
         ?>
-    </div>
+
+</div>
 
   </main>
 

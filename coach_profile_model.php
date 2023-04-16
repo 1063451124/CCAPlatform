@@ -5,7 +5,7 @@ function get_coach_profile(){
     $conn = get_conn();
     // how to connect mysql fast
     $get_coach_profile= "select name, industries, detail, img, career from cca.coach";
-    $result = $conn->query($get_coach_profile);
+$result = $conn->query($get_coach_profile);
     // example even for multiple rows
     
     if (!$result) {
@@ -22,6 +22,7 @@ function get_coach_profile(){
     $tmp["detail"] = $row['detail'];
     $tmp["img"] = $row['img'];
     $tmp["career"] = $row['career'];
+    $tmp["file_type"] = $row['file_type'];
     $ret[] = $tmp;
     }
     //last row returned
@@ -30,3 +31,9 @@ function get_coach_profile(){
 }
 
 ?>
+
+
+
+
+
+

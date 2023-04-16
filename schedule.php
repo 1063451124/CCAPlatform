@@ -13,7 +13,7 @@ function build_timeslot($date, $month, $year,$snum) {
     if ($time_input <= date('Ymd')){
       return '';
     }
-    $timeslot = "<table class='table col-md-8 table-bordered' id='schedule'>";
+    $timeslot = "<table class='table table-bordered col-md-8' id='schedule'>";
     $timeslot .= "<caption id='tbs'>{$month}.{$date}.{$year}</caption>";
 
     $status = get_timeslot_status($time_input);
