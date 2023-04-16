@@ -1,3 +1,4 @@
+//Ekko
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +19,6 @@
         </thead>
         <tbody>
             <?php
-            // Ekko
             // Connect to the database
             $host = "localhost";
             $username = "root";

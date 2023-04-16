@@ -1,4 +1,4 @@
-
+// Ekko
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +8,6 @@
     <h1>Edit Timeslot</h1>
 
     <?php
-    // Ekko
     // Check if the date_timeslot parameter was passed in the URL
     if (isset($_GET["date_timeslot"])) {
         $date_timeslot = $_GET["date_timeslot"];
@@ -46,7 +45,7 @@
     ?>
 
     <form method="post" action="update_timeslot.php">
-        <input type="text" id="date_timeslot" name="date_timeslot" value="<?php echo $date_timeslot; ?>">
+        <input type="hidden" id="date_timeslot" name="date_timeslot" value="<?php echo $date_timeslot; ?>">
 
         <label for="book_date">Book Date:</label>
         <input type="text" id="book_date" name="book_date" value="<?php echo $book_date; ?>"><br>

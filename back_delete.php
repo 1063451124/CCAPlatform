@@ -1,6 +1,6 @@
 
 <?php
-// Ekko
+//Ekko
 // Connect to the database
 $host = "localhost";
 $username = "root";
