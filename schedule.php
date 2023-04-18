@@ -4,7 +4,7 @@
       //function: build timeslot with input date
       //////////////////////////////////////
 define("SESSION_DURATION", 45);
-function build_timeslot($date, $month, $year,$snum) {
+function build_timeslot($date, $month, $year,$snum,$lastdate) {
     require_once('schedule_model.php');
     #TODO: fixed input
     #DONE by STEVEN
@@ -43,7 +43,7 @@ function build_timeslot($date, $month, $year,$snum) {
             $timeslot .= "<td class='{$value['status']}'>{$timeslot_str}</td>";
           }
           else{
-            $timeslot .= "<td class='{$value['status']}'><a href='xxx_model.php?datetimeslot={$value['date_timeslot']}'>{$timeslot_str}</a></td>";
+            $timeslot .= "<td class='{$value['status']}'><a onclick='javascript:return del_confirm();' href='xxx_model.php?datetimeslot={$value['date_timeslot']}&olddate={$lastdate}'>{$timeslot_str}</a></td>";
           }
           
         }else{
@@ -58,7 +58,7 @@ function build_timeslot($date, $month, $year,$snum) {
             $timeslot .= "<td class='{$value['status']}'>{$timeslot_str}</td>";
           }
           else{
-            $timeslot .= "<td class='{$value['status']}'><a href='xxx_model.php?datetimeslot={$value['date_timeslot']}'>{$timeslot_str}</a></td>";
+            $timeslot .= "<td class='{$value['status']}'><a onclick='javascript:return del_confirm();' href='xxx_model.php?datetimeslot={$value['date_timeslot']}&olddate={$lastdate}'>{$timeslot_str}</a></td>";
           }
         }
         //$_GET['datetimeslot']

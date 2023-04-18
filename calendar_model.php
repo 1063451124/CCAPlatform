@@ -21,8 +21,6 @@ $ret = $row['ret'];
 return $ret;
 }
 
-
-
       //////////////////////////////////////
       //author: sunyt
       //function: find lastdate for user
@@ -38,7 +36,8 @@ return $ret;
             while ($row = mysqli_fetch_assoc($result))
              {
             //print_r($row['ret']);
-            $ret = $row['lastdate'];
+            $ret['lastdate'] = $row['lastdate'];
+            $ret['date_timeslot'] = $row['date_timeslot'];
              }
              //last row returned
             return $ret;

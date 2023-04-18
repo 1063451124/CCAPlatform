@@ -78,7 +78,7 @@ function build_calendar($month, $year) {
 
 function get_lastdate($sid){
 	//require_once('calendar_model.php');
-	echo get_last_date($sid);
+	return get_last_date($sid);
 	
 }
   

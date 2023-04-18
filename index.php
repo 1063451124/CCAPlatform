@@ -92,7 +92,7 @@
       <?php
       require 'calendar.php';
       $ld = get_lastdate($_SESSION["username"]);
-      echo($ld);
+      echo($ld['lastdate']);
       ?>
     </b></div>      
         <div class="reminder">
@@ -156,7 +156,7 @@
       //function: show timeslot
       //////////////////////////////////////
         require 'schedule.php';
-        $timeslot = build_timeslot($day_time, $month_time , $year_time, $_SESSION["username"]);
+        $timeslot = build_timeslot($day_time, $month_time , $year_time, $_SESSION["username"],$ld['date_timeslot']);
         #$timeslot = '<div>' . $timeslot . '</div>';
         #$timeslot .= '<style type="text/css">table tbody tr td, table tbody tr th { text-align: center; }</style>';
         print($timeslot);
@@ -216,7 +216,14 @@ var month = $("#month").val();
   //window.location.href = '/coach_profile.php#'+dash_value ;
 }
   )
-
+  function del_confirm() {
+            var msg = "Are you sure to switch to new date?";
+            if (confirm(msg) == true) {
+              return true;
+            } else {
+              return false;
+            }
+          }
   </script>
 
 
