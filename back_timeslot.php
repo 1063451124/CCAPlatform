@@ -120,6 +120,7 @@
             </thead>
             <tbody>
               <?php
+
               // Connect to the database
               $host = "localhost";
               $username = "root";
@@ -131,9 +132,10 @@
               if (!$conn) {
                 die("Connection failed: " . mysqli_connect_error());
               }
-
+              $today = date('Ymd');
+              //echo ($today);
               // Retrieve timeslots from the database
-              $sql = "SELECT * FROM timeslots";
+              $sql = "SELECT * FROM timeslots where book_date >= {$today}";
               $result = mysqli_query($conn, $sql);
 
               if (mysqli_num_rows($result) > 0) {
@@ -332,7 +334,7 @@
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <input type="submit" class="btn btn-success" value="Create" id ="submitc">
+                  <input type="submit" class="btn btn-success" value="Create" id="submitc">
                 </div>
               </form>
             </div>

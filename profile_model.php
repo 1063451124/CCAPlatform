@@ -8,7 +8,7 @@ function get_profile($sid="72534128"){
     
     $conn = get_conn();
     // how to connect mysql fast
-    $get_timeslot_status= "select * from cca.student_profile where student_id = {$sid};";
+    $get_timeslot_status= "select * from cca.student_profile where student_id = {$sid}";
     $result = $conn->query($get_timeslot_status);
     // example even for multiple rows
     //print($get_timeslot_status);
@@ -17,7 +17,8 @@ function get_profile($sid="72534128"){
         exit();
     }
     $ret = array();
-    
+    //print_r($result);
+    //print_r('wtf');
     while ($row = mysqli_fetch_assoc($result))
     {
     $tmp = array();
@@ -31,6 +32,7 @@ function get_profile($sid="72534128"){
     $tmp["cv"] = $row['cv'];
     $tmp["wechat_id"]= $row['wechat_id'];
     $tmp["purpose"]= $row['purpose'];
+    $tmp["file_type"]= $row['file_type'];
     $ret[] = $tmp;
     }
     $conn->close();
@@ -47,7 +49,7 @@ function upsert_profile($POST,$FILES){
     require_once 'db_conn.php';
     $conn = get_conn();
     // how to connect mysql fast
-PRINT_R($FILES["CV"]);
+//PRINT_R($FILES["CV"]);
     if ($FILES["CV"]["error"] > 0)
     {
         $POST['CV'] = "";
@@ -56,7 +58,7 @@ PRINT_R($FILES["CV"]);
     {
         $POST['CV'] = file_get_contents($FILES["CV"]["tmp_name"]);
     }
-    echo $FILES["CV"]['type'];
+    //echo $FILES["CV"]['type'];
     //echo "<img src='data:image/png;base64,".base64_encode($POST['CV'])."'  class='image rounded mx-auto d-block'>";
     $update_profile= "insert INTO `cca`.`student_profile` (`student_id`, `first_name`, `last_name`, `hk_mobile_no`, `cityu_email`, `work_location`, `wechat_id`, `purpose`,`file_type`,`cv`) 
     VALUES (?, ?, ?, ?, ?, ?, ?, ?,?,?) on duplicate key update

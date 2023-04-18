@@ -4,7 +4,7 @@ function get_coach_profile(){
     require_once 'db_conn.php';
     $conn = get_conn();
     // how to connect mysql fast
-    $get_coach_profile= "select name, industries, detail, img, career from cca.coach";
+    $get_coach_profile= "select name, industries, detail, img, career,file_type from cca.coach";
 $result = $conn->query($get_coach_profile);
     // example even for multiple rows
     

@@ -21,7 +21,7 @@ if (isset($_GET['name'])) {
     $sql = "DELETE FROM coach WHERE name='$name'";
     if (mysqli_query($conn, $sql)) {
         //echo "Coach deleted successfully.";
-        echo "<script>alert('Coach deleted successfully.');location.href='/back_timeslot.php';</script>";
+        echo "<script>alert('Coach deleted successfully.');location.href='/back_coach.php';</script>";
         
     } else {
         //echo "Error deleting coach: " . mysqli_error($conn);

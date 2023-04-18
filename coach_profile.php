@@ -30,26 +30,31 @@
         font-size: 3.5rem;
       }
     }
+
     .name {
-        font-size: 20px;
-        padding-top: 20px;
-        font-family:"Times New Roman", Times, serif;
+      font-size: 20px;
+      padding-top: 20px;
+      font-family: "Times New Roman", Times, serif;
 
     }
+
     .container {
-        display: flex;
-        align-items: flex-end;
-        justify-content: left
+      display: flex;
+      align-items: flex-end;
+      justify-content: left
     }
-    p{
-        font-family:"Times New Roman", Times, serif;
-        font-size: 25px;
+
+    p {
+      font-family: "Times New Roman", Times, serif;
+      font-size: 25px;
     }
-    h4{
-        font-family:"Times New Roman", Times, serif;
+
+    h4 {
+      font-family: "Times New Roman", Times, serif;
     }
+
     hr {
-        /*border: none;
+      /*border: none;
         height: 1px;
         /* Set the hr color 
         color: #333;  /* old IE 
@@ -57,12 +62,11 @@
         margin-top: 50px;
         margin-bottom: 50px;
         border-top: 1px solid black;*/
-        display: inline-block;
-        width: 100%;
-        height: 1px;
-        border-top: 1px solid black;
+      display: inline-block;
+      width: 100%;
+      height: 1px;
+      border-top: 1px solid black;
     }
-
   </style>
 
 
@@ -72,11 +76,11 @@
 </head>
 
 <body>
-    <!--<a class="introduction" target="_blank" href="/index.php">GO to make an appointment!</a>-->
-    <div class='container'><a href="https://www.cityu.edu.hk/" target="_blank"> <img  src="../assets/resources/cityu.png" alt="City University" height=100></a></div>
-    <center>
-        <h2><u>Career Coach Profile</u></h2>
-    </center>
+  <!--<a class="introduction" target="_blank" href="/index.php">GO to make an appointment!</a>-->
+  <div class='container'><a href="https://www.cityu.edu.hk/" target="_blank"> <img src="../assets/resources/cityu.png" alt="City University" height=100></a></div>
+  <center>
+    <h2><u>Career Coach Profile</u></h2>
+  </center>
 
   <?php
   require "./navi.php";
@@ -88,63 +92,66 @@
 
     <div class="row">
 
-        <?php
-            //////////////////////////////////////
-            //author: LIN
-            //function:build coach profile
-            //////////////////////////////////////
+      <?php
+      //////////////////////////////////////
+      //author: LIN
+      //function:build coach profile
+      //////////////////////////////////////
 
-            function build_coach_profile(){
-                
-                require_once('coach_profile_model.php');
-                $coach_list = get_coach_profile();
-                $profile = "";
+      function build_coach_profile()
+      {
 
-                foreach ($coach_list as $key => $value){
-                    $dash_name = str_replace(" " , "_", $value['name']);
-                    $dash_name = str_replace("," , "_", $dash_name);
-                    $pic_str = "<img src='data:".$value["file_type"].";base64,".base64_encode($value["img"])."'  class='image rounded mx-auto d-block'>";
-                    $profile .= "<hr  id='{$dash_name}'>";
-                    $profile .= "<div class='row'>";
-                    $profile .= "<div class='image col-md-4'>";
-                    $profile .= "<div>{$pic_str}</div>";
-                    $profile .= "</div>";
-                    $profile .= "<div class='info col-md-6'>";
-                    $profile .= "<div class='name'><h3> <b>{$value["name"]}</b></h3></div>";
-                    $profile .= "<h4><i>{$value["career"]}</i></h4>";
-                    $profile .= "<p><b>Familiar industries and job function: </b><br>{$value["industries"]}</p>";
-                    //$profile .= "<br><br>";
-                    $style_str = 'style="font-size: 22px;"';
-                    
-                    $profile .= "</div>";
-                    $profile .= "</div>";
-                    $profile .= "<p {$style_str}>{$value["detail"]}</p>";
-                    $profile .= "<br>";
+        require_once('coach_profile_model.php');
+        $coach_list = get_coach_profile();
+        $profile = "";
 
-                    #$profile .="<br><br>";
-                    
+        foreach ($coach_list as $key => $value) {
 
-                }
-                return $profile;
-            }
-            $coach_profile = build_coach_profile();
-            print($coach_profile);
-        ?>
+          $dash_name = str_replace(" ", "_", $value['name']);
+          $dash_name = str_replace(",", "_", $dash_name);
+          if (!empty($value["img"])) {
+            $pic_str = "<img src='data:" . $value["file_type"] . ";base64," . base64_encode($value["img"]) . "'  class='image rounded mx-auto d-block img-fluid'>";
+          } else {
+            $pic_str = "<img src='/assets/resources/default.jpg' class='image rounded mx-auto d-block img-fluid'>";
+          }
+          $profile .= "<hr  id='{$dash_name}'>";
+          $profile .= "<div class='row'>";
+          $profile .= "<div class='image col-md-4'>";
+          $profile .= "<div>{$pic_str}</div>";
+          $profile .= "</div>";
+          $profile .= "<div class='info col-md-8'>";
+          $profile .= "<div class='name'><h3> <b>{$value["name"]}</b></h3></div>";
+          $profile .= "<h4><i>{$value["career"]}</i></h4>";
+          $profile .= "<p><b>Familiar industries and job function: </b><br>{$value["industries"]}</p>";
+          //$profile .= "<br><br>";
+          $style_str = 'style="font-size: 22px;"';
+
+          $profile .= "</div>";
+          $profile .= "</div>";
+          $profile .= "<p {$style_str}>{$value["detail"]}</p>";
+          $profile .= "<br>";
+
+          #$profile .="<br><br>";
+
+
+        }
+        return $profile;
+      }
+      $coach_profile = build_coach_profile();
+      print($coach_profile);
+      ?>
     </div>
 
   </main>
 
 
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-    crossorigin="anonymous"></script>
-  <script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')</script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script>
+    window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')
+  </script>
   <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 
 
 </body>
 
 </html>
-
-    
-
