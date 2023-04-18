@@ -92,7 +92,7 @@
       <?php
       require 'calendar.php';
       $ld = get_lastdate($_SESSION["username"]);
-      echo($ld)
+      echo($ld);
       ?>
     </b></div>      
         <div class="reminder">

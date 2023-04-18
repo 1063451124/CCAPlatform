@@ -21,6 +21,7 @@ function build_timeslot($date, $month, $year,$snum) {
     
     $prev_coach = "";
     $counter_flag = 0;
+    //print_r($status);
     foreach ($status as $key => $value) {
         
         if ($prev_coach!=$value['coach']){
@@ -38,8 +39,11 @@ function build_timeslot($date, $month, $year,$snum) {
           if ($value['booker'] == $snum){
             $timeslot .= "<td class='table-warning currentapp' data-toggle='tooltip' data-placement='bottom' title='Current Appointment'>{$timeslot_str}</td>";
           }
-          else{
+          elseif($value['status'] == 'booked'){
             $timeslot .= "<td class='{$value['status']}'>{$timeslot_str}</td>";
+          }
+          else{
+            $timeslot .= "<td class='{$value['status']}'><a href='xxx_model.php?datetimeslot={$value['date_timeslot']}'>{$timeslot_str}</a></td>";
           }
           
         }else{
@@ -50,10 +54,14 @@ function build_timeslot($date, $month, $year,$snum) {
           if ($value['booker'] == $snum){
             $timeslot .= "<td class='table-warning currentapp' data-toggle='tooltip' data-placement='bottom' title='Current Appointment'>{$timeslot_str}</td>";
           }
-          else{
+          elseif($value['status'] == 'booked'){
             $timeslot .= "<td class='{$value['status']}'>{$timeslot_str}</td>";
           }
+          else{
+            $timeslot .= "<td class='{$value['status']}'><a href='xxx_model.php?datetimeslot={$value['date_timeslot']}'>{$timeslot_str}</a></td>";
+          }
         }
+        //$_GET['datetimeslot']
 
     }
     $timeslot .= "</tr>";

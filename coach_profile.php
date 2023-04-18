@@ -73,7 +73,7 @@
 
 <body>
     <!--<a class="introduction" target="_blank" href="/index.php">GO to make an appointment!</a>-->
-    <div class='container'><a href="https://www.cityu.edu.hk/" target="_blank"> <img  src="cityu.png" alt="City University" height=100></a></div>
+    <div class='container'><a href="https://www.cityu.edu.hk/" target="_blank"> <img  src="../assets/resources/cityu.png" alt="City University" height=100></a></div>
     <center>
         <h2><u>Career Coach Profile</u></h2>
     </center>

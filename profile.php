@@ -48,12 +48,10 @@
   ?>
 
   <main role="main" class="container align-middle">
-  <div class="reminder"> ** See the timetable and profile of career coaches <a class="introduction" target="_blank"
-        href="https://www.cityu.edu.hk/sds/web/tpg/careerservice/cap/Career_Coaches_Timetable_Mar2023_v2.pdf">HERE</a>
+    <div class="reminder"> ** See the timetable and profile of career coaches <a class="introduction" target="_blank" href="https://www.cityu.edu.hk/sds/web/tpg/careerservice/cap/Career_Coaches_Timetable_Mar2023_v2.pdf">HERE</a>
       before choosing your preferred timeslot.</div>
-    <div class="reminder"> ** origin <a class="introduction" target="_blank"
-        href="https://cityuhk.questionpro.com/a/TakeSurvey?tt=XUT1Bc3X%2BesECHrPeIW9eQ%3D%3D">HERE</a></div>
-    <div class="reminder">Profile last modified at: <?php echo($userinfo['last_modify_time']);?> </a></div>
+    <div class="reminder"> ** origin <a class="introduction" target="_blank" href="https://cityuhk.questionpro.com/a/TakeSurvey?tt=XUT1Bc3X%2BesECHrPeIW9eQ%3D%3D">HERE</a></div>
+    <div class="reminder">Profile last modified at: <?php echo ($userinfo['last_modify_time']); ?> </a></div>
 
     <!--
     By:duyulin 
@@ -61,117 +59,115 @@
     -->
 
     <form method="post" action="profile_model.php" onsubmit="return check();" enctype="multipart/form-data">
-    <div class="form-group">
+      <div class="form-group">
         <label>First Name </label>
-        <input type="text" class="form-control" name="FirstName" value="<?php echo($userinfo['first_name']);?>" placeholder="" required>
+        <input type="text" class="form-control" name="FirstName" value="<?php echo ($userinfo['first_name']); ?>" placeholder="" required>
       </div>
 
       <div class="form-group">
         <label>Last Name</label>
-        <input type="text" class="form-control" name="LastName" value="<?php echo($userinfo['last_name']);?>" required>
+        <input type="text" class="form-control" name="LastName" value="<?php echo ($userinfo['last_name']); ?>" required>
       </div>
 
-       <!--
+      <!--
       <div class="form-group">
         <label>Student ID</label>
-        <input type="text" class="form-control" id="StudentID" value="<?php echo($userinfo['first_name']);?>" required>
+        <input type="text" class="form-control" id="StudentID" value="<?php echo ($userinfo['first_name']); ?>" required>
       </div>
          -->
-		 
+
       <div class="form-group">
         <label>HK Mobile</label>
-        <input type="text" class="form-control" name="HKMobile" id="HKMobile" value="<?php echo($userinfo['hk_mobile_no']);?>" required>
+        <input type="text" class="form-control" name="HKMobile" id="HKMobile" value="<?php echo ($userinfo['hk_mobile_no']); ?>" required>
       </div>
       <div class="form-group">
         <label>CityU Email Address</label>
-        <input type="email" class="form-control" name="CityUEmail" value="<?php echo($userinfo['cityu_email']);?>" required>
+        <input type="email" class="form-control" name="CityUEmail" value="<?php echo ($userinfo['cityu_email']); ?>" required>
       </div>
 
       <div class="form-group">
         <label>Update your CV</label>
-        <input type="file" class="form-control-file" name="CV" id="CV" accept=".gif,.jpg,.jpeg,.png,.GIF,.JPG,.PNG"  value="<?php $userinfo["cv"];?>" >
-        <?php 
-    //print_r($userinfo);
-    echo "<img src='data:".$userinfo["file_type"].";base64,".base64_encode($userinfo["cv"])."'  class='image rounded mx-auto d-block'>";
-    ?>
+        <input type="file" class="form-control-file" name="CV" id="CV" accept=".gif,.jpg,.jpeg,.png,.GIF,.JPG,.PNG" value="<?php $userinfo["cv"]; ?>">
+        <?php
+        //print_r($userinfo);
+        echo "<img src='data:" . $userinfo["file_type"] . ";base64," . base64_encode($userinfo["cv"]) . "'  class='image rounded mx-auto d-block'>";
+        ?>
       </div>
-      
-	  <div class="form-group">
+
+      <div class="form-group">
         <label>Desired work destination after graduation</label><br>
         <select name="destination" required>
-		<?php
-		$x=array("Hong Kong","Mainland China","Macao","Taiwan","Not Sure");
-		foreach ($x as $value){
-			if($value==$userinfo['work_location']){
-				echo "<option value='".$value."' selected>$value</option>";
-			}
-			else{
-				echo "<option value='".$value."' >$value</option>";
-			}
-		}
-		?>
+          <?php
+          $x = array("Hong Kong", "Mainland China", "Macao", "Taiwan", "Not Sure");
+          foreach ($x as $value) {
+            if ($value == $userinfo['work_location']) {
+              echo "<option value='" . $value . "' selected>$value</option>";
+            } else {
+              echo "<option value='" . $value . "' >$value</option>";
+            }
+          }
+          ?>
         </select>
       </div>
-	  
-	  <div class="form-group">
+
+      <div class="form-group">
         <label>Purpose of the consultation</label><br>
         <select name="purpose" required>
-		<?php
-		$x=array("CV and Cover Letter Review","Career Planning","Interview Skills","Job application advertising",
-		"Career Direction","Job Search Techniques","Professional Development");
-		foreach ($x as $value){
-			if($value==$userinfo['purpose']){
-				echo "<option value='".$value."' selected>$value</option>";
-			}
-			else{
-				echo "<option value='".$value."' >$value</option>";
-			}
-		}
-		?>
+          <?php
+          $x = array(
+            "CV and Cover Letter Review", "Career Planning", "Interview Skills", "Job application advertising",
+            "Career Direction", "Job Search Techniques", "Professional Development"
+          );
+          foreach ($x as $value) {
+            if ($value == $userinfo['purpose']) {
+              echo "<option value='" . $value . "' selected>$value</option>";
+            } else {
+              echo "<option value='" . $value . "' >$value</option>";
+            }
+          }
+          ?>
         </select>
       </div>
 
       <div class="form-group">
         <label>Wechat ID (Optional)</label>
-        <input type="text" class="form-control" name="WechatID" value="<?php echo($userinfo['wechat_id']);?>">
+        <input type="text" class="form-control" name="WechatID" value="<?php echo ($userinfo['wechat_id']); ?>">
       </div>
       <input type="submit" name="action" value="Update">
 
 
     </form>
-</main>
+  </main>
 
-<script>
-// author
-//func
- function check() {
-   alert("Are you sure to submit?");
-	 var p = /^\d{8}$/;
-	 var hkmobileno = document.getElementById('HKMobile').value;
-	 if (!p.test(hkmobileno)){
-		 alert("Error mobile format, please check.");
-		 //return false;
-	 }
-  //author sunyt
- //func verify file format
- var files = document.getElementById('CV').files;  
-    var fileSize = 0;
-    if(files.length!=0){
-        fileSize = files[0].size/1024/1024;
-    }
-    if(fileSize > 5){
+  <script>
+    // author
+    //func
+    function check() {
+      alert("Are you sure to submit?");
+      var p = /^\d{8}$/;
+      var hkmobileno = document.getElementById('HKMobile').value;
+      if (!p.test(hkmobileno)) {
+        alert("Error mobile format, please check.");
+        //return false;
+      }
+      //author sunyt
+      //func verify file format
+      var files = document.getElementById('CV').files;
+      var fileSize = 0;
+      if (files.length != 0) {
+        fileSize = files[0].size / 1024 / 1024;
+      }
+      if (fileSize > 5) {
         alert("File not larger than 5M, please check.");
         return false;
+      }
     }
- }
+  </script>
 
-
-</script>
-
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-    crossorigin="anonymous"></script>
-  <script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')</script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script>
+    window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')
+  </script>
   <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 
 
